@@ -1,0 +1,30 @@
+//Generics
+//Generics fetaure help us write functions that are type safe flexible. they work with any type
+// so this allows you to get the best of flexibility and safety.
+
+//we convert insertAtBeginning function to a Generic function
+// typescript will look at array: T[], value: T type and it knows that the return type is of
+// the same value as the typr of T input array.
+
+// so instead of having function that accept 'any' type, and return 'any' value, we create
+// a generic function that accept T type and return T value.
+
+function insertAtBeginning<T>(array: T[], value: T) {
+  const newArray = [value, ...array];
+  return newArray;
+}
+
+// function insertAtBeginning(array: any[], value: any) {
+//   const newArray = [value, ...array];
+//   console.log(newArray);
+// }
+
+const demoArray = [1, 2, 30];
+// return type number
+const updatedArray = insertAtBeginning(demoArray, -1); // [-1, 1, 2, 3]
+
+// this will not work because updatedArray is of number return type, and split works only for string
+// updatedArray[0].split("")
+
+// return type string
+const updatedString = insertAtBeginning(["a", "b", "c"], "d");
